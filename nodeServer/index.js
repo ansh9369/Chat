@@ -17,10 +17,17 @@ const users = {};
 
 socketIo.on('connection', (socket) => {
     socket.on('new-user-joined', name => {
-        console.log("New user", name)
+        // console.log("New user", name)
         users[socket.id] = name;
         socket.broadcast.emit('user-joined', name);
     })
+    
+socket.on('message', (message) => {
+    outputMessage(message);
+  
+    // Scroll down
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  });
 
     socket.on('send', message => {
         socket.broadcast.emit('receive', { message: message, name: users[socket.id] })
@@ -32,4 +39,10 @@ socketIo.on('connection', (socket) => {
         socket.broadcast.emit('left', users[socket.id]);
         delete users[socket.id];
     });
+    // socket.on('feedback',(data)=>{
+    //     socket.broadcast.emit('feedback', data)
+    // })
 })
+
+
+

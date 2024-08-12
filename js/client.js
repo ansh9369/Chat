@@ -3,7 +3,9 @@ const socket = io('http://localhost:8000');
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
 const messageContainer = document.querySelector(".container");
-var audio = new Audio('tone.mp3');
+// let element = document.querySelector('feedback');
+// var audio = new Audio('tone.mp3');
+var audio = new Audio('tone.mp3')
 
 const append = (message, position) => {
     const messageElement = document.createElement('div');
@@ -12,9 +14,27 @@ const append = (message, position) => {
     messageElement.classList.add(position);
     messageContainer.append(messageElement);
     if (position == 'left') {
-        Audio.play();
+        audio.play();
     }
-}
+};
+
+// messageInput.addEventListener('focus', (e)=> {
+//     socket.emit('feedback',{
+//         feedback: `${name.value} is typing a message`,
+//     })
+// })
+// messageInput.addEventListener('keypress', (e)=>{
+//     socket.emit('feedback',{
+//         feedback: `${name.value} is typing a message`,
+//     })
+// })
+// messageInput.addEventListener('blur', (e)=>{
+//     socket.emit('feedback',{
+//         feedback: '',
+//     })
+// })
+
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const message = messageInput.value;
@@ -35,3 +55,11 @@ socket.on('receive', data => {
 socket.on('left', name => {
     append(`${name} left the chat`, 'left');
 })
+// socket.on('feedback', (data) =>{
+//     let element = `
+//             <li class="message-feedback">
+//             <p class="feedback", id="feedback">${data.feedback}</p>
+//         </li> 
+//     `
+//     messageContainer.innerHTML += element
+// })
