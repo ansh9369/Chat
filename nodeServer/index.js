@@ -1,11 +1,20 @@
+const http = require('http');
 const express = require('express');
 const {Server} = require('socket.io');
 
 const app = express();
 
-const server = app.listen(8000, () => {
-    console.log('Application started on port 3000!');
+const server = http.createServer((req, res) => {
+    // Set the response header
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    // Write some text to the response
+    res.end('Welcome to my simple Node.js app!');
 });
+ 
+
+// const server = app.listen(8000, () => {
+//     console.log('Application started on port 3000!');
+// });
 
 const socketIo = new Server(server, {
     cors: {
@@ -44,5 +53,6 @@ socket.on('message', (message) => {
     // })
 })
 
-
-
+server.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
