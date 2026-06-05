@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Chat Room</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* General styles for full-screen background image */
+        body {
+            background-image: url('path-to-your-image.jpg');
+            /* Replace with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Container styling for readability */
+        .container {
+            background: rgba(255, 255, 255, 0.892);
+            /* Adds a semi-transparent background */
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 90%;
+            /* Set max width to 90% of viewport for smaller devices */
+            width: 400px;
+            /* Default width */
+        }
+
+        /* Label styling */
+        label {
+            display: inline-block;
+            padding: 8px;
+        }
+
+        .mt-5 {
+            margin-top: 0.2rem !important;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+
+            /* For tablets and small desktops */
+            .container {
+                width: 80%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 0.9rem;
+                /* Adjust font size for smaller screens */
+            }
+
+            label {
+                font-size: 0.9rem;
+                /* Adjust label font size */
+            }
+
+            button {
+                font-size: 1rem;
+                /* Adjust button font size */
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* For mobile devices */
+            .container {
+                width: 90%;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+                /* Further adjust font size */
+                margin-top: 20px;
+            }
+
+            label {
+                font-size: 0.8rem;
+                /* Further adjust label font size */
+            }
+
+            button {
+                font-size: 0.9rem;
+                /* Further adjust button font size */
+                width: 100%;
+                /* Full-width button on small screens */
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            .h1,
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5" style="color: black;">Create a New Chat Room</h1>
+        <form id="create-room-form" class="mt-4">
+            <div class="form-group mb-3">
+                <label for="roomName" style="color: black;">Enter Room Name or ID:</label>
+                <input type="text" id="roomName" class="form-control" placeholder="e.g., chat123" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Create / Join Room</button>
+        </form>
+    </div>
+
+ 
+
+    <div class="footer">
+        <p>Designed and Developed by <span>Papaya Coders</span></p>
+    </div>
+    
+
+    <script>
+        document.getElementById('create-room-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const roomName = document.getElementById('roomName').value.trim();
+            if (roomName) {
+                window.location.href = `/?${roomName}`; // Redirect to the chat room
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
